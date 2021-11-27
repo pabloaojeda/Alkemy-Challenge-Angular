@@ -12,13 +12,14 @@ export class LoginComponent implements OnInit {
   constructor(private axiosService: AxiosService, private router: Router) {}
 
   ngOnInit(): void {
-    this.axiosService.getDatos();
-    this.axiosService.postDatos2();
+    this.axiosService.getHeroe();
   }
 
   login(loginForm: NgForm) {
     if (loginForm.invalid) {
       return;
     }
+    const { email, password } = loginForm.value;
+    this.axiosService.login(email, password);
   }
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import axios, { Axios } from 'axios';
 
 @Injectable({
@@ -8,43 +9,25 @@ export class AxiosService {
   urlalkemy: string = 'http://challenge-react.alkemy.org/';
   apiheroes: string = 'https://superheroapi.com/api/2043777549115321';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
-  postDatos2() {
-    return axios
-      .post(`${this.urlalkemy}`, {
-        email: 'challenge@alkemy.org',
-        password: 'react',
-      })
-      .then((res) => {
-        console.log(res);
-      });
+  login(email: string, password: string) {
+    return axios.post(`${this.urlalkemy}`, { email, password }).then((res) => {
+      console.log(res);
+      this.setToken(res.data.token);
+      this.router.navigate(['home']);
+    });
   }
 
-  getDatos() {
-    axios
-      .get('https://superheroapi.com/api/2043777549115321/644', {})
-      .then((res) => console.log(res));
+  getHeroe() {
+    return axios.get(`${this.apiheroes}/644`, {}).then((res) => {
+      console.log(res);
+    });
   }
 
-  // getHeroe() {
-  //   return axios
-  //     .get(`https://superheroapi.com/api/2043777549115321/644`, {})
-  //     .then((res) => {
-  //       console.log(res);
-  //     });
-  // }
-
-  // getHeroe2() {
-  //   axios({
-  //     method: 'get',
-  //     url: `https://superheroapi.com/api/2043777549115321/644`,
-  //     withCredentials: false,
-  //     params: {
-  //       access_token: 2043777549115321,
-  //     },
-  //   });
-  // }
+  setToken(token: string) {
+    localStorage.setItem('token', token);
+  }
 }
 
 // postDatos(){
