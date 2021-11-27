@@ -8,5 +8,12 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));
+
+// const app = await NestFactory.create(AppModule);
+// app.enableCors({
+//   origin: ['http://localhost:4200'],
+// });
+// await app.listen(3000);
