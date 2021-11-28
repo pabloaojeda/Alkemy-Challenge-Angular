@@ -1,13 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import axios, { Axios } from 'axios';
+import { Heroe } from '../interface/heroe';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AxiosService {
   urlalkemy: string = 'http://challenge-react.alkemy.org/';
-  apiheroes: string = 'https://superheroapi.com/api/2043777549115321';
+  apiheroes: string = 'https://superheroapi.com/api/2043777549115321/';
+  // personaje: Heroe = {
+  //   appearance: '',
+  //   biography: '',
+  //   connections: '',
+  //   id: 0,
+  //   image: '',
+  //   name: '',
+  //   powerstats: '',
+  //   work: '',
+  // };
+  personaje: any;
+  public personajeString: any = {};
 
   constructor(private router: Router) {}
 
@@ -19,10 +32,15 @@ export class AxiosService {
     });
   }
 
-  getHeroe() {
-    return axios.get(`${this.apiheroes}/644`, {}).then((res) => {
-      console.log(res);
-    });
+  getHeroe(id: number) {
+    return axios.get(`${this.apiheroes}${id}`);
+    // .then((res) => {
+    //   this.personaje = res.data;
+    // this.personajeString = JSON.stringify(this.personaje);
+    // console.log(this.personajeString);
+    // console.log(this.personaje);
+    // return this.personaje;
+    // });
   }
 
   setToken(token: string) {

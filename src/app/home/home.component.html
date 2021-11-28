@@ -1,1 +1,24 @@
-<p>home works!</p>
+<div class="container align-center">
+  <div class="input-group">
+    <input
+      type="search"
+      class="form-control rounded"
+      placeholder="Search"
+      aria-label="Search"
+      aria-describedby="search-addon"
+    />
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="(searchHeroes)"
+    >
+      search
+    </button>
+  </div>
+  <div *ngIf="probando">
+    <h3>{{ probando.name }}</h3>
+    <img src="{{ probando.image.url }}" />
+
+    <button>Buy</button>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { HomeModule } from './home/home.module';
 import { MaterialModule } from './material.module';
 import { LoginModule } from './login/login.module';
 import { FormsModule } from '@angular/forms';
+import { AxiosService } from './services/axios.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,7 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [AxiosService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
