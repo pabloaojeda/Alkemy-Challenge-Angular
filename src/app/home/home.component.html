@@ -2,23 +2,68 @@
   <div class="input-group">
     <input
       type="search"
+      id="name"
+      name="name"
       class="form-control rounded"
       placeholder="Search"
-      aria-label="Search"
-      aria-describedby="search-addon"
+      #probandoqueonda
     />
     <button
       type="button"
       class="btn btn-outline-primary"
-      (click)="(searchHeroes)"
+      (click)="searchHeroes(probandoqueonda.value)"
     >
       search
     </button>
   </div>
-  <div *ngIf="probando">
-    <h3>{{ probando.name }}</h3>
-    <img src="{{ probando.image.url }}" />
 
-    <button>Buy</button>
+  <div class="row my-4" *ngIf="probando">
+    <div class="col-4" *ngFor="let hero of probando; index as i">
+      <div class="">
+        <div class="">
+          <div class="card" style="width: 18rem">
+            <img
+              src="{{ probando[i].image.url }}"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ probando[i].name }}</h5>
+              <p class="card-text">PowerStats</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                Combat:
+                {{ probando[i].powerstats.combat }}
+              </li>
+              <li class="list-group-item">
+                Durability:
+                {{ probando[i].powerstats.durability }}
+              </li>
+              <li class="list-group-item">
+                Intelligence:
+                {{ probando[i].powerstats.intelligence }}
+              </li>
+              <li class="list-group-item">
+                Power:
+                {{ probando[i].powerstats.power }}
+              </li>
+              <li class="list-group-item">
+                Speed:
+                {{ probando[i].powerstats.speed }}
+              </li>
+              <li class="list-group-item">
+                Strength:
+                {{ probando[i].powerstats.strength }}
+              </li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Add to team</a>
+              <a href="#" class="card-link">More info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

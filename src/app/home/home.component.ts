@@ -9,20 +9,23 @@ import { Heroe } from '../interface/heroe';
 })
 export class HomeComponent implements OnInit {
   probando: any;
+  name: string = '';
   constructor(private axiosService: AxiosService, private router: Router) {}
 
   ngOnInit(): void {
-    this.axiosService.getHeroe(643).then((res) => {
-      this.probando = res.data;
-      // this.personajeString = JSON.stringify(this.personaje);
-      // console.log(this.personajeString);
+    //   this.axiosService.getHeroe(643).then((res) => {
+    //     this.probando = res.data;
+    //
+    //     console.log(this.probando);
+    //     return this.probando;
+    //   });
+  }
+
+  searchHeroes(name: string) {
+    this.axiosService.getHeroes(name).then((res) => {
+      this.probando = res.data.results;
       console.log(this.probando);
       return this.probando;
     });
-  }
-
-  searchHeroes() {
-    const heroe1 = this.axiosService.getHeroe(644);
-    console.log(heroe1);
   }
 }

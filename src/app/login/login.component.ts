@@ -11,9 +11,7 @@ import { AxiosService } from '../services/axios.service';
 export class LoginComponent implements OnInit {
   constructor(private axiosService: AxiosService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.axiosService.getHeroe(643);
-  }
+  ngOnInit(): void {}
 
   login(loginForm: NgForm) {
     if (loginForm.invalid) {

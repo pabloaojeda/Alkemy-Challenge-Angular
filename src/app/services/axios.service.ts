@@ -9,18 +9,9 @@ import { Heroe } from '../interface/heroe';
 export class AxiosService {
   urlalkemy: string = 'http://challenge-react.alkemy.org/';
   apiheroes: string = 'https://superheroapi.com/api/2043777549115321/';
-  // personaje: Heroe = {
-  //   appearance: '',
-  //   biography: '',
-  //   connections: '',
-  //   id: 0,
-  //   image: '',
-  //   name: '',
-  //   powerstats: '',
-  //   work: '',
-  // };
-  personaje: any;
-  public personajeString: any = {};
+
+  // personaje: any;
+  //  personajeString: any = {};
 
   constructor(private router: Router) {}
 
@@ -46,16 +37,8 @@ export class AxiosService {
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
+
+  getHeroes(name: string) {
+    return axios.get(`${this.apiheroes}/search/${name}`);
+  }
 }
-
-// postDatos(){
-//   axios.post('http://challenge-react.alkemy.org/', {
-//     email: this.login.email,
-//     password: this.login.password
-
-//   })
-//   .then(response => {
-//     console.log(response);
-//     this.getToken(response.data.token);
-//     this.router.navigate(['home']);
-//   });
